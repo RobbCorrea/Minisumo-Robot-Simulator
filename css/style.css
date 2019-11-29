@@ -6,13 +6,16 @@ body
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: #031321;
+  background: #FFFFFF;
   font-family: consolas;
 }
 
+.btn-pill{
+  border-radius: 20px;
+}
 canvas{
   align-content: center;
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
   padding-left: 0;
     padding-right: 0;
     margin-left: auto;
@@ -39,29 +42,6 @@ canvas{
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  background-color: #4b0082;
-  color: white;
-  font-size: 16px;
-  padding: 12px 24px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  text-align: center;
-}
-
-.container .btn:hover {
-  background-color: #c06bff;
-  color: white;
-}
-
-#introTheme{
-  display:none
-}
-
-a{
-  position: relative;
-  display: inline-block;
-  padding: 15px 30px;
   color: #2196f3;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -71,8 +51,12 @@ a{
   transition: 0.2s;
 }
 
-a:hover{
+.container .btn:hover {
   color: #255784;
   background: #2196f3;
   box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3;
+}
+
+#introTheme{
+  display:none
 }
