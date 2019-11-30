@@ -1,3 +1,4 @@
+/*Hasta aquí sólo es el fondo del html*/
 body
 {
   margin: 0;
@@ -10,10 +11,64 @@ body
   font-family: consolas;
 }
 
-.btn-pill{
-  border-radius: 20px;
+body {
+  background: #240229;
+  margin: 0;
+  padding: 0;
 }
+#loader {
+  background: linear-gradient(0deg,#14ffe9, #ffeb3b, #ff00e0);
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 10%;
+  left: 85%;
+  transform: translate(-50%,-50%);
+  border-radius: 50%;
+  animation: loader 0.5s linear 0s infinite;
+}
+#loader:after {
+  content: '';
+  background: #240229;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  transform: scale(0.8);
+}
+#loader span {
+  background: linear-gradient(0deg,#14ffe9, #ffeb3b, #ff00e0);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+}
+#loader span:nth-child(1) {
+  filter: blur(10px);
+}
+#loader span:nth-child(2) {
+  filter: blur(20px);
+}
+#loader span:nth-child(3) {
+  filter: blur(30px);
+}
+@keyframes loader {
+  from {
+    transform: translate(-50%,-50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%,-50%) rotate(360deg);
+  }
+}
+
+
 canvas{
+  top: 50%;
+  left: 50%;
   align-content: center;
   background-color: rgb(255, 255, 255);
   padding-left: 0;
@@ -23,25 +78,260 @@ canvas{
     display: block;
   box-shadow: 0px 0px 20px 1px #bbb;
   text-align: center;
+  border-radius: 600px;
 }
 
 .container {
   position: relative;
-  width: 1200px;
-  max-width: 900px;
+  width: auto;
+  max-width: auto;
 }
 
 .container img {
   width: 100%;
   height: auto;
 }
-
-.container .btn {
-  position: absolute;
-  top: 80%;
+/*Botón ¡A jugar! con luz de neón y marco fugaz*/
+.container .btn{
+  top: 82%;
   left: 50%;
+  position: absolute;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
+  color: #ADFF2F;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-decoration: none;
+  font-size: 32px;
+  overflow: hidden;
+  transition: 0.2s;
+  border-radius: 10px;
+}
+
+/*Animación de marco fugaz de luz*/
+/*Los spans son los puntos "cardinales" por donde
+pasará la luz del marco animado.*/
+.container .btn span{
+  position: absolute;
+  display: block;
+}
+
+.container .btn span:nth-child(1)
+{
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg,transparent,#ADFF2F);
+}
+
+.container .btn:hover span:nth-child(1)
+{
+  left: 100%;
+  transition: 1s;
+}
+/*Hasta aquí ya recorre de x (0,0) en la parte superior
+hacia la derecha*/ 
+
+.container .btn span:nth-child(3)
+{
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg,transparent,#ADFF2F);
+}
+
+.container .btn:hover span:nth-child(3)
+{
+  right: 100%;
+  transition: 1s;
+  transition-delay: 0.5s;
+}
+/*Hasta aquí ya recorre de x (-width,0) en la parte inferior
+hacia la izquierda*/ 
+
+/*Aquí el marco fugaz recorrerá los lados.*/ 
+.container .btn span:nth-child(2)
+{
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg,transparent,#ADFF2F);
+}
+
+.container .btn:hover span:nth-child(2)
+{
+  top: 100%;
+  transition: 1s;
+  transition-delay: 0.25s;
+}
+
+/*Aquí hacemos el otro lado.*/
+.container .btn span:nth-child(4)
+{
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg,transparent,#ADFF2F);
+}
+
+.container .btn:hover span:nth-child(4)
+{
+  bottom: 100%;
+  transition: 0.8s;
+  transition-delay: 0.75s;
+}
+
+
+.container .btn:hover {
+  color: #9ACD32;
+  background: #ADFF2F;
+  box-shadow: 0 0 10px #ADFF2F, 0 0 40px #ADFF2F, 0 0 80px #ADFF2F;
+  transition: 1s;
+  transition-delay: 1s;
+}
+
+
+
+/*Botón de instrucciones*/
+#sweetalert-a{
+  top: 85%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  color: #8A2BE2;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-decoration: none;
+  font-size: 32px;
+  overflow: hidden;
+  transition: 0.2s;
+  border-radius: 10px;
+}
+/*Aquí ya enciende en neón azul, pero queremos darle un borde.*/
+/*
+#sweetalert-a:hover {
+  color: #255784;
+  background: #2196f3;
+  box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3;
+}
+*/
+/*Animación de marco fugaz de luz*/
+/*Los spans son los puntos "cardinales" por donde
+pasará la luz del marco animado.*/
+#sweetalert-a span{
+  position: absolute;
+  display: block;
+}
+
+#sweetalert-a span:nth-child(1)
+{
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg,transparent,#8A2BE2);
+}
+
+#sweetalert-a:hover span:nth-child(1)
+{
+  left: 100%;
+  transition: 1s;
+}
+/*Hasta aquí ya recorre de x (0,0) en la parte superior
+hacia la derecha*/ 
+
+#sweetalert-a span:nth-child(3)
+{
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg,transparent,#8A2BE2);
+}
+
+#sweetalert-a:hover span:nth-child(3)
+{
+  right: 100%;
+  transition: 1s;
+  transition-delay: 0.5s;
+}
+/*Hasta aquí ya recorre de x (-width,0) en la parte inferior
+hacia la izquierda*/ 
+
+/*Aquí el marco fugaz recorrerá los lados.*/ 
+#sweetalert-a span:nth-child(2)
+{
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg,transparent,#8A2BE2);
+}
+
+#sweetalert-a:hover span:nth-child(2)
+{
+  top: 100%;
+  transition: 1s;
+  transition-delay: 0.25s;
+}
+
+/*Aquí hacemos el otro lado.*/
+#sweetalert-a span:nth-child(4)
+{
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg,transparent,#8A2BE2);
+}
+
+#sweetalert-a:hover span:nth-child(4)
+{
+  bottom: 100%;
+  transition: 0.8s;
+  transition-delay: 0.75s;
+}
+
+#sweetalert-a:hover {
+  color: #4B0082;
+  background: #8A2BE2;
+  box-shadow: 0 0 10px #8A2BE2, 0 0 40px #8A2BE2, 0 0 80px #8A2BE2;
+  transition: 1s;
+  transition-delay: 1s;
+}
+
+#fin {
+  display: none;
+}
+
+
+/*
+body
+{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #031321;
+  font-family: consolas;
+}
+Hasta aquí sólo es el fondo del html
+
+Lo que sigue es #sweetalert-a
+Hasta aquí sólo te hace las letras bonitas y en mayúscula.
+Todavía no enciende.
+a
+{
+  position: relative //aquí hubo un cambio
+  display: inline-block;
+  padding: 15px 30px;
   color: #2196f3;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -49,14 +339,81 @@ canvas{
   font-size: 24px;
   overflow: hidden;
   transition: 0.2s;
+
 }
 
-.container .btn:hover {
-  color: #255784;
+Hasta aquí ya enciende tal como lo tienes, pero él lo comentó.
+Él empieza a hacer los spans que son los puntos "cardinales" por donde
+pasará la luz del marco animado.
+
+/* a:hover
+{
+  color: #255784;}
   background: #2196f3;
   box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3;
+  transition-delay: 1s;
+
+}
+Hasta aquí sólo le da posición al
+primer span.
+a span{
+  position: absolute;
+  display: block;
+}
+Aquí ya aparece el rayito sobre las letras
+de izquierda a derecha, pero no se desplaza.
+a span:nth-child(1)
+{
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg,transparent,#2196f3);
+
 }
 
-#introTheme{
-  display:none
+a:hover span:nth-child(1)
+{
+  left: 100%;
+  transition: 1s;
 }
+
+Aquí comienza el marco fugaz recorre 
+de derecha a izquierda la parte inferior del botón.
+a span:nth-child(3)
+{
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg,transparent,#2196f3);
+
+}
+
+a:hover span:nth-child(3)
+{
+  left: 100%;
+  transition: 0.5s;
+}
+
+Aquí comenzamos a hacer los lados.
+a span:nth-child(2)
+{
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg,transparent,#2196f3);
+
+}
+
+a:hover span:nth-child(2)
+{
+  left: 100%;
+  transition: 0.5s;
+  transition-delay: 0.25s;
+}
+
+*/
+
+

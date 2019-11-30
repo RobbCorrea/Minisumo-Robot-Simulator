@@ -4,42 +4,61 @@
         <meta content="text/html;charset=utf-8" http-equiv="Content-Type"><!--Estos datos no son mp3 u otro, son html.-->
         <meta content="utf-8" http-equiv="encoding"><!--Que tengo mi texto en formato UTF.-->
         <link rel="stylesheet" type="text/css" href="./css/style.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous">
+        </script>
     </head>
     
     <style>
         body {
-            background-image: url('./images/blueBg.jpg');
+            background: #240229;
         }
     </style>
 
 <body>
-    
-        <div class="container" style="text-align:center; margin: 0 auto;">
-                <img id="pantallaInicio" src="./images/logoMejorado.png" alt="" class="game-logo">
-                <button class="btn btn-pill blue" id="boton-inicia-juego">¡A jugar!</button>  
-                
-            </div>
-            <div id="pruebaSweetAlert">
-                <audio id = "introTheme" controls>
-                    <source type = "audio/mp3" src="./sounds/4616-werq-by-kevin-macleod.mp3">
-                    </audio>
 
-                </div>
-                <button id="sweetalert-a">Instrucciones</button>
-                <script
-                src="https://code.jquery.com/jquery-3.4.1.min.js"
-                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-                crossorigin="anonymous"></script>
-                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-
-        <script>//Script del botón de instrucciones.
+    <div class="container" style="text-align:center; margin: 0 auto;">
+        <img id="pantallaInicio" src="./images/logoMejorado.png" alt="" class="game-logo">
+        <a href = "#" class="btn btn-pill blue" id="boton-inicia-juego">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                ¡A jugar!
+        </a>     
+    </div>
+    <div id= "divInstrucciones">
+        <a href = "#" id="sweetalert-a">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Instrucciones
+        </a>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    </div>
+    <script>//SweetAlert del botón de instrucciones.
         let botonIniciar = document.getElementById("sweetalert-a");
         botonIniciar.addEventListener("click",function(){
             Swal.mixin({
                         confirmButtonText: 'Next &rarr;',
                         showCancelButton: true,
-                        progressSteps: ['1', '2', '3']
+                        progressSteps: ['1', '2', '3', '4']
                         }).queue([
+                        {
+                            title: 'Bienvenido a Minisumo Sim',
+                            text: '¿Has participado en una batalla como ésta?',
+                            background: '#fff url(./images/electroBg2.jpg)',
+                            backdrop: `
+                                        rgba(0,0,123,0.4)
+                                        url("/images/nyan-cat.gif")
+                                        left top
+                                        no-repeat
+                                    `,
+                            imageUrl: './images/sweetAlertShow.gif',
+                            imageAlt: 'Minisumo Show'
+                        },
                         {
                             title: 'Instrucciones',
                             text: 'Simula rounds de minisumo con tus amigos',
@@ -50,69 +69,57 @@
                                         left top
                                         no-repeat
                                     `,
-                            imageUrl: './images/FelineGif2.gif',
+                            imageUrl: './images/victory.gif',
                             imageAlt: 'Minisumo Show'
                         },
                         {
-                            title: 'Jugador 1',
-                            text: 'Controles',
-                            background: '#fff url(./images/electroBg3.jpg)',
-                            imageUrl: './images/controlRed.png',
+                            title: 'Controles',
+                            text: 'Jugador 1',
+                            background: '#fff url(./images/electroBg3.jpg)',                                imageUrl: './images/controlRed.png',
                             imageWidth: 400,
                             imageHeight: 200,
                             imageAlt: 'Controles Red',
                         },
                         {
-                            title: 'Jugador 2',
-                            text: 'Controles',
+                            title: 'Controles',
+                            text: 'Jugador 2',
                             background: '#fff url(./images/electroBg4.jpg)',
                             imageUrl: './images/arrows.png',
-                        imageWidth: 400,
-                        imageHeight: 200,
-                        imageAlt: 'Controles Blue',
+                            imageWidth: 400,
+                            imageHeight: 200,
+                            imageAlt: 'Controles Blue',
                         }
-                        ]).then((result) => {
-                        if (result.value) {
-                            const answers = JSON.stringify(result.value)
-                            Swal.fire({
-                            title: 'Gana...',
-                            text: 'quien lleva una mayor aceleración o queda en el ring. Esquiva a tu rival y ¡encarrérate!',
-                            confirmButtonText: 'Estoy listo'
+                    ]).then((result) => {
+                                if (result.value) {
+                                    const answers = JSON.stringify(result.value)
+                                    Swal.fire({
+                                    title: 'Gana...',
+                                    text: 'quien lleva una mayor aceleración o queda dentro del ring. Esquiva a tu rival y ¡encarrérate!',
+                                    confirmButtonText: 'Estoy listo.'
+                                    })
+                                }
                             })
-                        }
-                        })
-        });
-
-
-
+                });
         </script>
+        <div id="loader">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+        </div>
+        <div id=""></div>
         <!--Imagen de fondo Photo by Deva Darshan from Pexels https://www.pexels.com/photo/aerial-photography-of-multicolored-soccer-field-1003869/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels-->
         
-        <!--Swal.mixin({
-  input: 'text',
-  confirmButtonText: 'Next &rarr;',
-  showCancelButton: true,
-  progressSteps: ['1', '2', '3']
-}).queue([
-  {
-    title: 'Question 1',
-    text: 'Chaining swal2 modals is easy'
-  },
-  'Question 2',
-  'Question 3'
-]).then((result) => {
-  if (result.value) {
-    const answers = JSON.stringify(result.value)
-    Swal.fire({
-      title: 'All done!',
-      html: `
-        Your answers:
-        <pre><code>${answers}</code></pre>
-      `,
-      confirmButtonText: 'Lovely!'
-    })
-  }
-})-->
+<!--
+    <body>
+        <a href ="#">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Neon Button
+        </a>
+    </body>    
+-->
 
             
 
